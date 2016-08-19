@@ -32,7 +32,7 @@ function find(input, isoV) {
 
   return iso.find((item) => {
     if (!item[field].includes('/')) return item[field] == input;
-    else item[field].includes(input);
+    return item[field].includes(input);
   });
 }
 

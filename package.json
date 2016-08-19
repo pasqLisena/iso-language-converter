@@ -1,6 +1,6 @@
 {
   "name": "iso-language-converter",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Converter between different ISO 639 language tags",
   "main": "index.es5.js",
   "jsnext:main": "index.js",
