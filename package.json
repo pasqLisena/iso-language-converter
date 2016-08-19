@@ -1,11 +1,12 @@
 {
   "name": "iso-language-converter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Converter between different ISO 639 language tags",
   "main": "index.es5.js",
   "jsnext:main": "index.js",
   "files": [
-    "index.es5.js"
+    "index.es5.js",
+    "iso.json"
   ],
   "scripts": {
     "test": "ava --require babel-register",
