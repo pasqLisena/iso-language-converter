@@ -61,3 +61,8 @@ test('Unfound value', t => {
   t.falsy(isoConv('ibl', {from:5}));
   t.falsy(isoConv('Italiano', {from: 'label'}));
 });
+
+test('2 codes for the same ISO', t=>{
+  t.is(isoConv('fra'), isoConv('fre'));
+  t.is(isoConv('fr', {to: 5}), 'fra');
+});

@@ -14,9 +14,15 @@ export default function isoLanguageConverter(input, options = {}) {
 
   let result = find(input, isoFrom);
 
-  if (!result) return null;
+  if (!result || !result[field]) return null;
 
-  return result[field];
+  let str = result[field];
+  if (!str.includes('/')) return str;
+
+  let parts = str.split('/');
+  str = parts[0].includes('*') ? parts[1] : parts[0];
+
+  return str.trim();
 }
 
 function find(input, isoV) {
@@ -24,7 +30,10 @@ function find(input, isoV) {
   // console.log(isoV + ' --> '+field);
   if (!field) throw new Error('"from" option invalid');
 
-  return iso.find((item) => (item[field] == input));
+  return iso.find((item) => {
+    if (!item[field].includes('/')) return item[field] == input;
+    else item[field].includes(input);
+  });
 }
 
 function code2field(isoV) {
