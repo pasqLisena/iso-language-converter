@@ -14,9 +14,15 @@ export default function isoLanguageConverter(input, options = {}) {
 
   let result = find(input, isoFrom);
 
-  if (!result || !result[field]) return null;
+  if (!result) return null;
 
   let str = result[field];
+
+  if (!str && isoTo != 'label' && options.fallback) {
+    // ISO 639-2/5 is the most complete: use that field for fallback
+    str = result['ISO 639-2/5'];
+  }
+
   if (!str.includes('/')) return str;
 
   let parts = str.split('/');

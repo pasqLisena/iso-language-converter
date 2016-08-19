@@ -67,3 +67,8 @@ test('2 codes for the same ISO', t=>{
   t.is(isoConv('fr', {to: 5}), 'fra');
   t.is(isoConv('fre', {to: 1}), 'fr');
 });
+
+test('fallback for newest codes', t=>{
+  t.falsy(isoConv('Judeo-Persian', {to: 1}));
+  t.truthy(isoConv('Judeo-Persian', {to: 1, fallback: true}));
+});

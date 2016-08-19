@@ -47,10 +47,14 @@ Options for the converter:
   // number of ISO 639 from 1 to 5, or 'label'
   // if not specified, guess on the input
   from: 1,
-  
+
   // number of ISO 639 from 1 to 5, or 'label'
   // if not specified, guess on the input
-  to: 'label'
+  to: 'label',
+
+  // return an ISO 639-5 if the requested ISO is not present (not valid with to:'label')
+  // default: false
+  fallback: false
 }
 ```
 
