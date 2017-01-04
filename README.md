@@ -2,7 +2,7 @@
 
 Converter between different ISO 639 language tags.
 
-The list of codes is taken by [Wikipedia](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes).
+The list of codes is taken by [Wikipedia](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes), while the default scripts for each language is taken from [this table](https://docs.google.com/spreadsheets/d/1M1yv9aBUmc-NyCJX69vOLUmH2uIglSwmDwgRgByI1AI).
 
 ## Install
 
@@ -19,11 +19,14 @@ isoConv('ita'); // Italian
 isoConv('it'); // Italian
 isoConv('Italian'); // it
 
-isoConv('it', {form: 1, to: 'label'}); // Italian
-isoConv('ita', {form: 2, to: 1}); // it
+isoConv('it', {from: 1, to: 'label'}); // Italian
+isoConv('ita', {from: 2, to: 1}); // it
 
-isoConv('it', {to: 'label'}); // Italian
-isoConv('ita', {to: 1}); // it
+isoConv('it', {from: 'label'}); // Italian
+isoConv('ita', {from: 1}); // it
+
+isoConv('it', {to: 'script'}); // 'Latn'
+isoConv('ho', {to: 'script'}); // undefined
 ```
 
 ## API
@@ -48,7 +51,7 @@ Options for the converter:
   // if not specified, guess on the input
   from: 1,
 
-  // number of ISO 639 from 1 to 5, or 'label'
+  // number of ISO 639 from 1 to 5, 'label' or 'script'
   // if not specified, guess on the input
   to: 'label',
 

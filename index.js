@@ -7,7 +7,11 @@ export default function isoLanguageConverter(input, options = {}) {
   let isoFrom = options.from ||
     ((input.length == 2) ? 1 : (input.length == 3) ? 5 : 'label');
 
-  let isoTo = options.to || (isoFrom == 'label' ? 1 : 'label');
+  if (isoFrom == 'script'){
+    throw new Error('"script" is not a valid value for the "from" option');
+  }
+
+    let isoTo = options.to || (isoFrom == 'label' ? 1 : 'label');
 
   let field = code2field(isoTo);
   if (!field) throw new Error('"to" option invalid');
@@ -23,7 +27,7 @@ export default function isoLanguageConverter(input, options = {}) {
     str = result['ISO 639-2/5'];
   }
 
-  if (!str.includes('/')) return str;
+  if (!str || !str.includes('/')) return str;
 
   let parts = str.split('/');
   str = parts[0].includes('*') ? parts[1] : parts[0];
@@ -59,7 +63,9 @@ function code2field(isoV) {
     case 'label':
       field = 'Language name';
       break;
-    default:
+    case 'script':
+      field = 'Default script';
+      break;
   }
   return field;
 }

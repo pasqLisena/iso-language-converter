@@ -1,6 +1,6 @@
 {
   "name": "iso-language-converter",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "Converter between different ISO 639 language tags",
   "main": "index.es5.js",
   "jsnext:main": "index.js",
@@ -20,6 +20,9 @@
   "keywords": [
     "iso", "language", "iso 639"
   ],
+  "jshintConfig": {
+    "esversion": 6
+  },
   "author": "Pasquale Lisena <pasquale.lisena@eurecom.fr> (http://pasqlisena.github.io/)",
   "license": "MIT",
   "bugs": {

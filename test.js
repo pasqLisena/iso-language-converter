@@ -72,3 +72,16 @@ test('fallback for newest codes', t=>{
   t.falsy(isoConv('Judeo-Persian', {to: 1}));
   t.truthy(isoConv('Judeo-Persian', {to: 1, fallback: true}));
 });
+
+test('get script successfully', t=>{
+  t.is(isoConv('it', {to: 'script'}), 'Latn');
+  t.is(isoConv('el', {to: 'script'}), 'Grek');
+});
+
+test('Unfound script', t=>{
+  t.falsy(isoConv('ho', {to: 'script'}));
+});
+
+test('"script" cannot be used as "from"', t=>{
+  t.throws(() => isoConv('Latn', {from: 'script'}), '"script" is not a valid value for the "from" option');
+});
